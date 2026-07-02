@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@utility category-pill {
+
+  @apply px-4 py-1.5 border border-gray-200 rounded-full bg-white text-[12px] font-medium text-gray-500 no-underline transition-all;
+   @apply hover:border-[#0a7b7b] hover:text-[#0a7b7b];
+}
