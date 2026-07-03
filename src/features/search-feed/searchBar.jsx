@@ -16,29 +16,23 @@ const MAX_SUGGESTIONS = 8;
 export function SearchBar({ className = "" }) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-
-  const [inputValue, setInputValue] = useState(
+ const [inputValue, setInputValue] = useState(
     () => searchParams.get("q") || ""
   );
 
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
   const [selectedIndex, setSelectedIndex] = useState(-1);
-
   const containerRef = useRef(null);
   const inputRef = useRef(null);
-
   const debounceRef = useRef(null);
   const abortRef = useRef(null);
 
   // Cache algorithm
   const cacheRef = useRef(new Map());
-
-  useEffect(() => {
+   useEffect(() => {
     const query = searchParams.get("q") || "";
     setInputValue(query);
   }, [searchParams]);
@@ -55,7 +49,6 @@ export function SearchBar({ className = "" }) {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-
     return () => {
       document.removeEventListener(
         "mousedown",
@@ -63,7 +56,6 @@ export function SearchBar({ className = "" }) {
       );
 
       clearTimeout(debounceRef.current);
-
       if (abortRef.current) {
         abortRef.current.abort();
       }
@@ -78,23 +70,19 @@ export function SearchBar({ className = "" }) {
 
   const fetchSuggestions = useCallback(async (query) => {
     const term = query.trim();
-
     if (term.length < MIN_QUERY_LENGTH) {
       clearSuggestions();
       return;
     }
 
     const cacheKey = term.toLowerCase();
-
-    if (cacheRef.current.has(cacheKey)) {
+     if (cacheRef.current.has(cacheKey)) {
       const cached = cacheRef.current.get(cacheKey);
-
       setSuggestions(cached);
       setShowDropdown(cached.length > 0);
       setLoading(false);
       setError(null);
-
-      return;
+       return;
     }
 
     if (abortRef.current) {
@@ -102,7 +90,6 @@ export function SearchBar({ className = "" }) {
     }
 
     abortRef.current = new AbortController();
-
     setLoading(true);
     setError(null);
 
@@ -122,20 +109,17 @@ export function SearchBar({ className = "" }) {
       }
 
       const data = await response.json();
-
       const results = Array.isArray(data)
         ? data.slice(0, MAX_SUGGESTIONS)
         : [];
 
       cacheRef.current.set(cacheKey, results);
-
-      setSuggestions(results);
+       setSuggestions(results);
       setShowDropdown(true);
       setSelectedIndex(-1);
     } catch (err) {
       if (err.name !== "AbortError") {
         console.error(err);
-
         setError("Unable to load suggestions.");
         clearSuggestions();
       }
@@ -148,7 +132,6 @@ export function SearchBar({ className = "" }) {
   const scheduleSuggestionFetch = useCallback(
     (value) => {
       clearTimeout(debounceRef.current);
-
       debounceRef.current = setTimeout(() => {
         fetchSuggestions(value);
       }, DEBOUNCE_DELAY);
@@ -159,13 +142,11 @@ export function SearchBar({ className = "" }) {
   const executeSearch = useCallback(
     (value) => {
       const term = value.trim();
-
       clearSuggestions();
 
       const current =
         (searchParams.get("q") || "").trim();
-
-      if (term === current) {
+        if (term === current) {
         return;
       }
 
@@ -190,8 +171,7 @@ export function SearchBar({ className = "" }) {
   const handleInputChange = useCallback(
     (e) => {
       const value = e.target.value;
-
-      setInputValue(value);
+       setInputValue(value);
       setSelectedIndex(-1);
       setError(null);
 
@@ -199,7 +179,6 @@ export function SearchBar({ className = "" }) {
         clearSuggestions();
         return;
       }
-
       scheduleSuggestionFetch(value);
     },
     [scheduleSuggestionFetch, clearSuggestions]
@@ -207,12 +186,9 @@ export function SearchBar({ className = "" }) {
 
   const handleInputFocus = useCallback(() => {
     const term = inputValue.trim().toLowerCase();
-
     if (term.length < MIN_QUERY_LENGTH) return;
-
     if (cacheRef.current.has(term)) {
       const cached = cacheRef.current.get(term);
-
       setSuggestions(cached);
       setShowDropdown(cached.length > 0);
       return;
@@ -225,7 +201,6 @@ export function SearchBar({ className = "" }) {
     setInputValue("");
     setError(null);
     clearSuggestions();
-
     inputRef.current?.focus();
 
     navigate("/");
@@ -237,9 +212,7 @@ export function SearchBar({ className = "" }) {
       if (!showDropdown) {
         if (e.key === "Enter") {
           e.preventDefault();
-
           clearTimeout(debounceRef.current);
-
           executeSearch(inputValue);
         }
 
@@ -249,8 +222,7 @@ export function SearchBar({ className = "" }) {
       switch (e.key) {
         case "ArrowDown":
           e.preventDefault();
-
-          setSelectedIndex((prev) =>
+           setSelectedIndex((prev) =>
             prev < suggestions.length - 1 ? prev + 1 : 0
           );
 
@@ -258,7 +230,6 @@ export function SearchBar({ className = "" }) {
 
         case "ArrowUp":
           e.preventDefault();
-
           setSelectedIndex((prev) =>
             prev > 0 ? prev - 1 : suggestions.length - 1
           );
@@ -267,7 +238,6 @@ export function SearchBar({ className = "" }) {
 
         case "Enter":
           e.preventDefault();
-
           clearTimeout(debounceRef.current);
 
           if (
@@ -278,20 +248,16 @@ export function SearchBar({ className = "" }) {
           } else {
             executeSearch(inputValue);
           }
-
           break;
 
         case "Escape":
           e.preventDefault();
-
-          clearSuggestions();
-
-          break;
+           clearSuggestions();
+           break;
 
         case "Tab":
           clearSuggestions();
-
-          break;
+           break;
 
         default:
           break;
@@ -339,7 +305,7 @@ export function SearchBar({ className = "" }) {
       ref={containerRef}
       className={`relative w-full max-w-xl mx-auto ${className}`}
     >
-      <div className="relative flex items-center w-full">
+      <div className="relative  flex items-center w-full">
         <button
           type="button"
           aria-label="Search"
@@ -381,7 +347,7 @@ export function SearchBar({ className = "" }) {
           onChange={handleInputChange}
           onFocus={handleInputFocus}
           onKeyDown={handleKeyDown}
-          className="w-full py-3 pl-12 pr-11 bg-neutral-50 hover:bg-neutral-100 focus:bg-white text-sm text-neutral-800 rounded-xl border border-neutral-200 focus:border-neutral-400 focus:ring-1 focus:ring-neutral-400 outline-none shadow-sm focus:shadow-md transition-all"
+          className="w-full py-3 pl-12 pr-11 bg-neutral-50  focus:bg-white text-sm text-neutral-800 rounded-full border border-neutral-200 focus:border-neutral-400 focus:ring-1 focus:ring-neutral-400 outline-none shadow-sm focus:shadow-md transition-all"
         />
 
         {inputValue && (

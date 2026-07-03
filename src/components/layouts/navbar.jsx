@@ -1,5 +1,5 @@
 import { FaBars,   } from 'react-icons/fa'
-import logoImg from '../../assets/Bmday_logo.png'
+import logoImg from '../../assets/logo.png'
 import searchImg from '../../assets/search_icon.png'
 import { Link } from 'react-router-dom';
 import CountrySelector from '../ui/countrySelector'; 
@@ -25,7 +25,7 @@ function Navbar() {
         <img 
   src={logoImg} 
   alt="bmday Logo" 
-  className="w-[60px] h-10 bg-transparent object-contain brightness-100 contrast-125 filter drop-shadow-[0_0_8px_rgba(255,255,255,0.85)]" 
+  className="block w-[130px] h-10 object-contain " 
 />
 
         </a>

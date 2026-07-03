@@ -64,7 +64,8 @@ export default function Hero() {
           </div>
 
        
-          <div className="swiper-pagination custom-dots absolute bottom-4 left-1/2 z-20 fnplex -translate-x-1/2 items-center gap-1.5 [&_.swiper-pagination-bullet-active]:bg-white [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:bg-white/40 [&_.swiper-pagination-bullet]:opacity-1 [&_.swiper-pagination-bullet]:transition-all" />
+        <div className="swiper-pagination custom-dots !absolute bottom-4 !left-1/2 z-20 flex -translate-x-1/2 justify-center items-center gap-1.5 [&_.swiper-pagination-bullet-active]:bg-white [&_.swiper-pagination-bullet]:h-2 [&_.swiper-pagination-bullet]:w-2 [&_.swiper-pagination-bullet]:bg-white/40 [&_.swiper-pagination-bullet]:opacity-1 [&_.swiper-pagination-bullet]:transition-all" />
+
         </Swiper>
       </div>
     </div>
