@@ -1,4 +1,4 @@
-import { FaBars,   } from 'react-icons/fa'
+import { FaBars, FaUserCircle  } from 'react-icons/fa'
 import logoImg from '../../assets/logo.png'
 import searchImg from '../../assets/search_icon.png'
 import { Link } from 'react-router-dom';
@@ -32,21 +32,31 @@ function Navbar() {
           <CountrySelector />
       </div>
       <SearchBar/>
+
+      <a 
+  href="/account/statements" 
+  className="flex h-10 items-center gap-2 px-3 text-sm font-semibold text-white hover:opacity-80 transition-opacity duration-200"
+>
+  {/* The Icon - Inherits the clean crisp white color */}
+  <FaUserCircle className="text-lg text-white shrink-0" />
+  <span className="flex flex-col text-xs font-semibold leading-[1.1] tracking-normal">
+    <span>Account&</span>
+    <span>Statements</span>
+  </span>
+</a>
+
    {/* RIGHT */}
 <div className="flex items-center gap-[18px] ml-auto">
+
   <Link to ="/signin"
-  
-        rel="noopener noreferrer"
+   rel="noopener noreferrer"
    className="no-underline text-white font-semibold ">Sign in</Link>
   <div className="icon-btn"></div>
   
  {/* THE LINK CONVERTED FOR FAST SINGLE-PAGE ROUTING */}
 <Link to="/cart" className="relative cursor-pointer text-[18px] select-none block">
   🛒
-  
-
-    <span className="absolute top-[-8px] right-[-10px] bg-[#e63946] text-white text-[11px] py-[2px] px-[6px] rounded-full min-w-[18px] text-center font-bold">
-      
+   <span className="absolute top-[-8px] right-[-10px] bg-[#e63946] text-white text-[11px] py-[2px] px-[6px] rounded-full min-w-[18px] text-center font-bold">
     </span>
   
 </Link>

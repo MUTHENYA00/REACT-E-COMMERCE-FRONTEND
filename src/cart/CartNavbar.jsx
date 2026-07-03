@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCartStore } from '../store/useCartStore';
-import logoImg from '../assets/Bmday_logo.png';
+import logoImg from '../assets/logo.png';
 
 export default function CartNavbar() {
   // 1. STATE ENGAGEMENT FOR SYSTEM MONITORING
