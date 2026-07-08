@@ -49,8 +49,6 @@ export default function ProductManagement() {
           if (!isMounted) return;
           
           console.warn("Backend not running or ready yet. Retrying in 3 seconds...", error);
-          
-          // CRITICAL: Keep setLoading(true) while waiting, then queue a retry
           setLoading(true); 
           retryTimer = setTimeout(fetchProducts, 3000); 
         });
