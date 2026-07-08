@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProductGrid1 from './ProductGrid1'; 
 
 export default function ProductManagement() {
-  // Start with an empty canvas. Your backend data machine will fill this up.
+ 
   const [processedProducts, setProcessedProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -10,7 +10,7 @@ export default function ProductManagement() {
     let retryTimer;
 
     const fetchProducts = () => {
-      // 1. Fetch your 60+ real products from your backend pipeline
+  
       fetch('http://localhost:5000/api/products/homepage') 
         .then((response) => {
           if (!response.ok) throw new Error('Server response error');
@@ -20,14 +20,11 @@ export default function ProductManagement() {
           if (!isMounted) return;
           
           const formatted = (Array.isArray(rawProducts) ? rawProducts : []).map((product) => {
-            // Stable stock generator
             const stableStock = ((product.id * 7) % 12) + 1;
             
             // Clean prices down to raw integers/floats
             const cleanDigits = product.price ? String(product.price).replace(/[^0-9.]/g, '') : '0';
             const baseKshPrice = parseFloat(cleanDigits) || 0;
-
-            // Change this line inside your ProductManagement data processing loop
             const finalPath = product.imageName 
               ? `http://localhost:5000${product.imageName.replace('/uploads/', '/Uploads/')}` 
               : null;
@@ -56,7 +53,7 @@ export default function ProductManagement() {
 
     fetchProducts();
 
-    // Clean up timers to prevent memory leaks if user leaves the page
+    // Cleans up timers to prevent memory leaks if user leaves the page
     return () => {
       isMounted = false;
       clearTimeout(retryTimer);

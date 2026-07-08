@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 
 import { useCurrency } from '../../hooks/useCurrency';
-// 1. STATE BINDING IMPORT: Connects this grid layout spoke directly to the store hub
 import { useCartStore } from '../../store/useCartStore';
 
 export default function ProductGrid1({ products = [] }) {
   const { formatPrice, loading } = useCurrency();
   const [wishlistedIds, setWishlistedIds] = useState(new Set());
 
-  // 2. STATE HUB METHOD EXTRACTION: Pulls the reactive action right into the file
   const addItem = useCartStore((state) => state.addItem);
 
   const toggleWishlist = (e, id) => {
@@ -29,7 +27,6 @@ export default function ProductGrid1({ products = [] }) {
     e.stopPropagation();
     e.preventDefault();
     
-    // Transmits the clicked item's numerical identifier straight to the cart vault
     addItem(id, 1);
     console.log(`Added product ${id} to global state store ledger.`);
   };
@@ -67,7 +64,7 @@ export default function ProductGrid1({ products = [] }) {
             className="group w-[210px] sm:w-[230px] shrink-0 bg-white rounded-2xl border border-gray-200 shadow-xs hover:shadow-lg transition-all duration-300 overflow-hidden snap-start flex flex-col justify-between relative block object-contain"
           >
             {/* 1. UPPER VISUAL LAYOUT */}
-{/* 1. UPPER VISUAL LAYOUT */}
+{/*  UPPER VISUAL LAYOUT */}
 <div className="w-full h-44 bg-gray-100 overflow-hidden relative">
   
   <img 
