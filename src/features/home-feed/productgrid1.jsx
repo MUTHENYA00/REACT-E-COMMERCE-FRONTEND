@@ -47,7 +47,7 @@ export default function ProductGrid1({ products = [] }) {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-5 py-8 space-y-4 bg-gray-50">
+    <div className="max-w-7xl mx-auto px-5 py-8 space-y-4 bg-black-100">
       
       {/* Header Info */}
       <div className="border-b border-gray-200 pb-3">
@@ -67,14 +67,15 @@ export default function ProductGrid1({ products = [] }) {
             className="group w-[210px] sm:w-[230px] shrink-0 bg-white rounded-2xl border border-gray-200 shadow-xs hover:shadow-lg transition-all duration-300 overflow-hidden snap-start flex flex-col justify-between relative block object-contain"
           >
             {/* 1. UPPER VISUAL LAYOUT */}
-            <div className="w-full h-44 bg-gray-100 overflow-hidden relative">
-              
-              <img 
-                src={product.imageUrl || null} 
-                alt={product.title} 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                loading="lazy" 
-              />
+{/* 1. UPPER VISUAL LAYOUT */}
+<div className="w-full h-44 bg-gray-100 overflow-hidden relative">
+  
+  <img 
+    src={product.imageUrl || "https://placehold.co"} 
+    alt={product.title} 
+    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+    loading="lazy" 
+  />
 
               {/* AUTOMATED STOCK BADGE */}
               {product.stockCount <= 3 && (

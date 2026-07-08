@@ -5,10 +5,6 @@ import { Link } from 'react-router-dom';
 import CountrySelector from '../ui/countrySelector'; 
 import { SearchBar } from '../../features/search-feed/searchBar';
 
-
-
-
-
 function Navbar() {
   return (
     <nav className=" flex items-center justify-between gap-5 py-[14px] px-5 bg-[#05445e]
@@ -18,14 +14,12 @@ function Navbar() {
       <div className="flex items-center gap-[12px]">
         <FaBars className="menu-btn" />
        
-
-{/*The Logo*/}
-
-       <a href='/' >
+       {/*The Logo*/}
+   <a href='/' >
         <img 
   src={logoImg} 
   alt="bmday Logo" 
-  className="block w-[130px] h-10 object-contain " 
+  className="block w-[50px] h-10 object-contain " 
 />
 
         </a>
@@ -37,7 +31,7 @@ function Navbar() {
   href="/account/statements" 
   className="flex h-10 items-center gap-2 px-3 text-sm font-semibold text-white hover:opacity-80 transition-opacity duration-200"
 >
-  {/* The Icon - Inherits the clean crisp white color */}
+
   <FaUserCircle className="text-lg text-white shrink-0" />
   <span className="flex flex-col text-xs font-semibold leading-[1.1] tracking-normal">
     <span>Account&</span>
@@ -45,7 +39,6 @@ function Navbar() {
   </span>
 </a>
 
-   {/* RIGHT */}
 <div className="flex items-center gap-[18px] ml-auto">
 
   <Link to ="/signin"
@@ -56,9 +49,7 @@ function Navbar() {
  {/* THE LINK CONVERTED FOR FAST SINGLE-PAGE ROUTING */}
 <Link to="/cart" className="relative cursor-pointer text-[18px] select-none block">
   🛒
-   <span className="absolute top-[-8px] right-[-10px] bg-[#e63946] text-white text-[11px] py-[2px] px-[6px] rounded-full min-w-[18px] text-center font-bold">
-    </span>
-  
+   <span className="absolute top-0 right-0 bg-[#e63946] text-white text-[11px] py-[2px] px-[6px] rounded-full min-w-[18px] text-center font-bold"></span>
 </Link>
 
 </div>

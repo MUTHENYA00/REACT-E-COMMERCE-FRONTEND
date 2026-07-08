@@ -28,8 +28,7 @@ export default function CartNavbar() {
           />
         </Link>
       </div>
-
-      {/* MIDDLE AREA: DISTRACTION-FREE VISUAL ZONE */}
+      
       {/* The entire Search Container, input field, and dropdown boxes are removed to clear screen clutter */}
       <div className="hidden sm:flex flex-1 justify-center">
         <span className="text-xs font-black uppercase tracking-widest text-teal-200/50 flex items-center gap-1.5">

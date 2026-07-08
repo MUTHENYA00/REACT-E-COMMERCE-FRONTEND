@@ -42,10 +42,7 @@ export function SearchProdDetail() {
     );
   };
   useEffect(() => {
-    window.scrollTo(0, 0); // Always snap layout viewport back up to the absolute top horizon
-
-    // 1. MEMORY-FIRST HYDRATION CHECK
-    // If the card payload was passed safely through the router carriage state, load it in 0ms
+    window.scrollTo(0, 0); 
     if (location.state?.product) {
       const activeProduct = location.state.product;
       setProduct(activeProduct);
@@ -54,20 +51,15 @@ export function SearchProdDetail() {
       // Execute local memory array filter pipeline for recommendations
       fetchLiveRecommendations(activeProduct.category, activeProduct.id);
     } else {
-      // 2. FAIL-SAFE FALLBACK PIPELINE
-      // Triggers ONLY if a user manually reloads/refreshes the browser tab or shares a deep link directly
+      
       fetchSingleItemFromServer(id);
     }
   }, [id, location.state]);
 
-  // ==========================================
-  // FAIL-SAFE SINGLE ITEM FETCH PIPE
-  // ==========================================
   const fetchSingleItemFromServer = async (productId) => {
     try {
       setIsLoading(true);
       
-      // Connects directly to your live Node.js catalog API distribution endpoint
       const targetUrl = `http://localhost:5000/api/products/${productId}`;
       const response = await fetch(targetUrl);
       
@@ -83,13 +75,9 @@ export function SearchProdDetail() {
       setIsLoading(false);
     }
   };
-  // ==========================================
-  // RECOMMENDER DISCOVERY PIPELINE
-  // Pulls related catalog objects matching the family family tag
-  // ==========================================
   const fetchLiveRecommendations = async (categoryName, currentId) => {
     try {
-      // Pulls dynamic database family rows using clean URL query parameters
+      
       const targetUrl = `http://localhost:5000/api/products/recommendations?category=${encodeURIComponent(categoryName)}&exclude=${currentId}`;
       const response = await fetch(targetUrl);
       

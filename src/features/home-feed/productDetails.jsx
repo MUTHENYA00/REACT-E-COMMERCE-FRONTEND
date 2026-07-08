@@ -112,7 +112,7 @@ export default function ProductDetails() {
   };
 
   if (loading) {
-    return <div className="text-center py-24 text-gray-500">Syncing with data machine...</div>;
+    return <div className="text-center py-24 text-gray-500">loading...</div>;
   }
 
   if (!product) {
@@ -128,7 +128,7 @@ export default function ProductDetails() {
     <div className="max-w-7xl mx-auto px-5 py-12 select-none bg-gray-50">
       <div className="mb-6">
         <Link to="/" className="text-xs font-bold text-teal-600 hover:text-teal-700 transition-colors flex items-center gap-1">
-          ← Back to Shop Dashboard
+          Back to Shop Dashboard
         </Link>
       </div>
 
@@ -256,7 +256,7 @@ export default function ProductDetails() {
               onClick={handleAddToOrder}
               className="w-full py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-xs transition-all active:scale-98 cursor-pointer flex items-center justify-center gap-2 mt-2"
             >
-              Add Selected Units to Shopping Cart
+              Add to Shopping Cart
             </button>
           </div>
         </div>
