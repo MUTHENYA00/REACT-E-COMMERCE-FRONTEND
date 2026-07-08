@@ -54,7 +54,6 @@ export default function ProductDetails() {
     // Data normalization
     const safePrice = rawProduct.price ? parseFloat(String(rawProduct.price).replace(/[^0-9.]/g, '')) : 0;
     
-    // Fixed: changed 'found' to 'rawProduct' to resolve ReferenceError and resolved variable definition
     const correctedImagePath = rawProduct.imageName 
       ? `http://localhost:5000${rawProduct.imageName.replace('/uploads/', '/Uploads/')}` 
       : null;
@@ -77,7 +76,6 @@ export default function ProductDetails() {
     ];
   }, [product]);
 
-  // 4. ACTIVE LIVE SUB-TOTAL COUNTER MATH
   const totalCalculatedPrice = useMemo(() => {
     if (!product) return 0;
     let addonSum = 0;

@@ -27,7 +27,7 @@ export default function ProductManagement() {
             const cleanDigits = product.price ? String(product.price).replace(/[^0-9.]/g, '') : '0';
             const baseKshPrice = parseFloat(cleanDigits) || 0;
 
-            // Change this line inside your ProductManagement data processing loop:
+            // Change this line inside your ProductManagement data processing loop
             const finalPath = product.imageName 
               ? `http://localhost:5000${product.imageName.replace('/uploads/', '/Uploads/')}` 
               : null;
