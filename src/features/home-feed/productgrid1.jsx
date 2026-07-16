@@ -10,9 +10,9 @@ export default function ProductGrid1({ products = [] }) {
 
   const addItem = useCartStore((state) => state.addItem);
 
-  const toggleWishlist = (e, id) => {
-    e.stopPropagation(); 
-    e.preventDefault();
+  const toggleWishlist = (event, id) => {
+    event.stopPropagation(); 
+    event.preventDefault();
     
     setWishlistedIds((prev) => {
       const next = new Set(prev);
@@ -22,10 +22,9 @@ export default function ProductGrid1({ products = [] }) {
     });
   };
 
-  // 3. COMPLETE ACTION WIRING UPDATE
-  const handleCartClick = (e, id) => {
-    e.stopPropagation();
-    e.preventDefault();
+  const handleCartClick = (event, id) => {
+    event.stopPropagation();
+    event.preventDefault();
     
     addItem(id, 1);
     console.log(`Added product ${id} to global state store ledger.`);
@@ -48,7 +47,7 @@ export default function ProductGrid1({ products = [] }) {
       
       {/* Header Info */}
       <div className="border-b border-gray-200 pb-3">
-        <h2 className="text-xl font-bold text-gray-800 tracking-tight">Today's Picks For You</h2>
+        <h2 className="text-xl font-bold text-gray-800 tracking-tight">Today's Picks </h2>
         <p className="text-xs text-gray-400">Scroll sideways manually to explore our latest items.</p>
       </div>
 
@@ -63,16 +62,15 @@ export default function ProductGrid1({ products = [] }) {
             key={product.id} 
             className="group w-[210px] sm:w-[230px] shrink-0 bg-white rounded-2xl border border-gray-200 shadow-xs hover:shadow-lg transition-all duration-300 overflow-hidden snap-start flex flex-col justify-between relative block object-contain"
           >
-            {/* 1. UPPER VISUAL LAYOUT */}
-{/*  UPPER VISUAL LAYOUT */}
-<div className="w-full h-44 bg-gray-100 overflow-hidden relative">
-  
-  <img 
-    src={product.imageUrl || "https://placehold.co"} 
-    alt={product.title} 
-    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-    loading="lazy" 
-  />
+           
+      {/*  UPPER VISUAL LAYOUT */}
+      <div className="w-full h-44 bg-gray-100 overflow-hidden relative">
+        <img 
+        src={product.imageUrl || "https://placehold.co"} 
+        alt={product.title} 
+        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+        loading="lazy" 
+        />
 
               {/* AUTOMATED STOCK BADGE */}
               {product.stockCount <= 3 && (
@@ -83,7 +81,7 @@ export default function ProductGrid1({ products = [] }) {
 
               {/* HEART WISHLIST BUTTON */}
               <button 
-                onClick={(e) => toggleWishlist(e, product.id)}
+                onClick={(event) => toggleWishlist(event, product.id)}
                 className="absolute top-2.5 right-2.5 z-10 p-2 bg-white/90 hover:bg-white rounded-full shadow-xs transition-all active:scale-90 cursor-pointer flex items-center justify-center"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={`w-3.5 h-3.5 transition-colors ${wishlistedIds.has(product.id) ? 'fill-rose-500 stroke-rose-500' : 'fill-transparent stroke-gray-400 group-hover:stroke-gray-600'}`} strokeWidth="2">
@@ -92,7 +90,7 @@ export default function ProductGrid1({ products = [] }) {
               </button>
             </div>
 
-            {/* 2. LOWER DATA DETAILS LAYER */}
+            {/*  LOWER DATA DETAILS LAYER */}
             <div className="p-4 flex flex-col gap-1 bg-white">
               <h3 className="text-xs font-bold text-gray-800 tracking-tight truncate m-0">
                 {product.title}
@@ -102,7 +100,7 @@ export default function ProductGrid1({ products = [] }) {
                 {product.description}
               </p>
 
-              {/* Pricing & Cart Footer */}
+              {/* Pricing  */}
               <div className="flex items-center justify-between pt-2 border-t border-gray-100 mt-1">
                 <span className="text-sm font-extrabold text-gray-900">
                   {formatPrice(product.price)}
@@ -110,7 +108,7 @@ export default function ProductGrid1({ products = [] }) {
                 
                 {/* CONNECTED INTERACTIVE GATEWAY TRIGGER BUTTON */}
                 <button 
-                  onClick={(e) => handleCartClick(e, product.id)}
+                  onClick={(event) => handleCartClick(event,product.id)}
                   className="p-2 rounded-lg bg-teal-600 hover:bg-teal-700 text-white shadow-xs transition-all active:scale-95 cursor-pointer flex items-center justify-center w-7 h-7"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-3.5 h-3.5">

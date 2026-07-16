@@ -41,10 +41,6 @@ export default function CountrySelector() {
 
     const syncCountry = async () => {
       for (const c of cleanCountryList) {
-       
-
-        
-        
       }
     };
 

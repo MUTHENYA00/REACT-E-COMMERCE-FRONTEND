@@ -12,11 +12,12 @@ function CategoryBar() {
         <a href="/category/Latest Devices" className="category-pill">
           Latest Devices
         </a>
-        <a href="/category/anniversaries" className="category-pill">
-          Happy Father's Day
+        <a href="http://localhost:5173/search?q=laptop" className="category-pill">
+          Laptop Bags& Laptop
         </a>
-        <a href="/category/Books" className="category-pill">
-          Books
+        <a href="
+http://localhost:5173/search?q=deodorant" className="category-pill">
+          Deodorant
         </a>
         <a href="/category/deals" className="category-pill">
           Best Deals

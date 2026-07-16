@@ -85,10 +85,7 @@ export default function Footer() {
     </button>
   </form>
 
-  {/* 
-   * CHANGED PART: Removed plain text statement.
-   * Constructed an aligned logo row containing your distinct pixel and vector asset imports.
-   */}
+
   <div className="pt-2">
     <p className="text-[10px] text-slate-400 font-sans uppercase tracking-wide m-0 mb-2">
       Secure Processing

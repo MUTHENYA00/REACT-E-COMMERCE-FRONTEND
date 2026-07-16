@@ -1,8 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom'; 
 import { useCurrency } from '../../hooks/useCurrency';
-
-// 1. STATE BINDING HOOK: Connects this detail view spoke directly to the store engine hub
 import { useCartStore } from '../../store/useCartStore';
 
 export default function ProductDetails() {
@@ -19,10 +17,8 @@ export default function ProductDetails() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
-  // EXTRACTION LIFELINE: Extracts the global cart add action directly into local scope
   const addItem = useCartStore((state) => state.addItem);
 
-  // FETCH SPECIFIC PRODUCT ON MOUNT / ID CHANGE
   useEffect(() => {
     setLoading(true);
     // Fetch directly from your backend data machine pipeline
@@ -33,7 +29,7 @@ export default function ProductDetails() {
       })
       .then((data) => {
         const productsArray = Array.isArray(data) ? data : [];
-        // Find the specific item matching the URL route parameter
+      
         const found = productsArray.find((item) => String(item.id) === String(id));
         setRawProduct(found || null);
         setLoading(false);
@@ -171,7 +167,6 @@ export default function ProductDetails() {
                 ))}
               </div>
               <span className="text-sm font-bold text-gray-700">4.9</span>
-              <span className="text-xs text-gray-400">(142 verified orders)</span>
             </div>
           </div>
 
